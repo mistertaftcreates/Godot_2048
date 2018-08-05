@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scenes/piece.tscn" type="PackedScene" id=1]
+[ext_resource path="res://scenes/1024_piece.tscn" type="PackedScene" id=2]
+[ext_resource path="res://art/pieces/512 Tile.png" type="Texture" id=3]
+
+[node name="512_piece" instance=ExtResource( 1 )]
+
+value = 512
+next_piece = ExtResource( 2 )
+
+[node name="Sprite" parent="." index="0"]
+
+texture = ExtResource( 3 )
+
+

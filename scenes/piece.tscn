@@ -1,0 +1,52 @@
+[gd_scene load_steps=2 format=2]
+
+[ext_resource path="res://scripts/piece.gd" type="Script" id=1]
+
+[node name="piece" type="Node2D"]
+
+script = ExtResource( 1 )
+_sections_unfolded = [ "Transform", "Visibility" ]
+value = null
+next_piece = null
+
+[node name="Sprite" type="Sprite" parent="." index="0"]
+
+[node name="move_tween" type="Tween" parent="." index="1"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="alpha_tween" type="Tween" parent="." index="2"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="destroy_tween" type="Tween" parent="." index="3"]
+
+repeat = false
+playback_process_mode = 1
+playback_speed = 1.0
+playback/active = false
+playback/repeat = false
+playback/speed = 1.0
+
+[node name="destroy_timer" type="Timer" parent="." index="4"]
+
+process_mode = 1
+wait_time = 0.6
+one_shot = true
+autostart = false
+
+[connection signal="tween_completed" from="alpha_tween" to="." method="_on_alpha_tween_tween_completed"]
+
+[connection signal="timeout" from="destroy_timer" to="." method="_on_destroy_timer_timeout"]
+
+

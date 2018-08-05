@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=2]
+
+[ext_resource path="res://art/ui/Background 2.png" type="Texture" id=1]
+[ext_resource path="res://art/ui/Top UI.png" type="Texture" id=2]
+[ext_resource path="res://art/ui/Bottom UI.png" type="Texture" id=3]
+[ext_resource path="res://art/ui/background panel.png" type="Texture" id=4]
+[ext_resource path="res://scripts/tile_backgrounds.gd" type="Script" id=5]
+[ext_resource path="res://scenes/tile_background.tscn" type="PackedScene" id=6]
+[ext_resource path="res://scripts/grid.gd" type="Script" id=7]
+[ext_resource path="res://scripts/score_keeper.gd" type="Script" id=8]
+
+[node name="main" type="Node2D" index="0"]
+
+[node name="TextureRect" type="TextureRect" parent="." index="0"]
+
+anchor_left = 0.0
+anchor_top = 0.0
+anchor_right = 0.0
+anchor_bottom = 0.0
+margin_right = 40.0
+margin_bottom = 40.0
+rect_pivot_offset = Vector2( 0, 0 )
+rect_clip_content = false
+mouse_filter = 1
+mouse_default_cursor_shape = 0
+size_flags_horizontal = 1
+size_flags_vertical = 1
+texture = ExtResource( 1 )
+stretch_mode = 0
+
+[node name="top_ui" type="Sprite" parent="." index="1"]
+
+position = Vector2( 288, 96 )
+texture = ExtResource( 2 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="bottom_ui" type="Sprite" parent="." index="2"]
+
+position = Vector2( 288, 960 )
+texture = ExtResource( 3 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="Sprite" type="Sprite" parent="." index="3"]
+
+position = Vector2( 288, 512 )
+texture = ExtResource( 4 )
+_sections_unfolded = [ "Transform" ]
+
+[node name="tile_backgrounds" type="Node2D" parent="." index="4"]
+
+script = ExtResource( 5 )
+_sections_unfolded = [ "Transform" ]
+tile_background = ExtResource( 6 )
+
+[node name="grid" type="Node2D" parent="." index="5"]
+
+script = ExtResource( 7 )
+_sections_unfolded = [ "Transform" ]
+x_start = 96
+y_start = 704
+offset = 128
+num_starting_pieces = 3
+width = 4
+height = 4
+
+[node name="score_keeper" type="Node2D" parent="." index="6"]
+
+script = ExtResource( 8 )
+
+[connection signal="score_changed" from="grid" to="score_keeper" method="_on_grid_score_changed"]
+
+
